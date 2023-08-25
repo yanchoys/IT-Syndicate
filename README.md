@@ -1,3 +1,6 @@
+# Task 1
+![task1](https://github.com/yanchoys/IT-Syndicate/assets/98917290/406b6629-7b91-4d51-9ee4-c3b9f27abd44)
+
 # Task 2
 Obtaining **AWS certifications** is a great way to validate expertise in cloud computing and advance career in the field. To create a certification plan, need to consider current knowledge and experience level, career goals, and the AWS certifications that align with interests and objectives. Suggested AWS certification plan along with goals and an order for obtaining each certificate.
 
@@ -85,3 +88,27 @@ In summary, each deployment option has its own set of advantages and disadvantag
 - **Lambda with RDS and S3** is cost-efficient and scalable, making it ideal for lightweight, event-driven applications, but may not be suitable for all types of applications due to resource constraints.
 
 The choice depends on factors like your application's complexity, scalability requirements, and your team's expertise. It's also possible to combine these approaches in a microservices architecture to leverage the strengths of each for different parts of the application.
+--------------------------------
+# Task 4
+
+#### Creating 3 different VPC + creating additional subnets for them
+![vpcs](https://github.com/yanchoys/IT-Syndicate/assets/98917290/33d5bc64-c6af-46e8-a8bc-2f434c17f4a4)
+![subnets](https://github.com/yanchoys/IT-Syndicate/assets/98917290/9b1924fe-5587-4ab8-bf11-f9e579f171a7)
+
+#### Adding IGW to the subnets + Creating Peering connections between VPCs
+![igw](https://github.com/yanchoys/IT-Syndicate/assets/98917290/f5ee15eb-7236-4368-b758-d4adc6ee61ff)
+![Peering](https://github.com/yanchoys/IT-Syndicate/assets/98917290/e66f0107-d573-404e-892d-73ce257c143a)
+
+#### Modifying subnets route tables to add Peering connections
+![routeTables](https://github.com/yanchoys/IT-Syndicate/assets/98917290/d664ba35-4c94-4f99-b209-3cb94c3d77ab)
+
+#### Modifying security to allow ICMP requests
+![secGroups](https://github.com/yanchoys/IT-Syndicate/assets/98917290/9588ad4c-115b-4639-9810-ad8e6c757b2e)
+
+#### Checking ping command between our webServers
+![pingServers](https://github.com/yanchoys/IT-Syndicate/assets/98917290/f3bd535c-19ad-41e4-93f9-35e01deae9ed)
+
+#### Modified user Data and preview of servers
+![userData](https://github.com/yanchoys/IT-Syndicate/assets/98917290/a528f191-d088-4b2a-a563-b2da9414b3db)
+![task4](https://github.com/yanchoys/IT-Syndicate/assets/98917290/d9494ae9-1813-43fa-acdd-eed31d0f4a87)
+
