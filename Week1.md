@@ -66,7 +66,8 @@ Certification Plan:
 - **Complex Setup:** Setting up the network and security groups for containers can be intricate.
 - **Cost Considerations:** Costs can increase if you don't carefully manage container resource allocations.
 
-![image](https://github.com/yanchoys/IT-Syndicate/assets/98917290/c2c9efb4-1c36-4057-987d-70a3f32cf915)
+![image](https://github.com/yanchoys/IT-Syndicate/assets/98917290/b77c2a0c-71b4-4be2-b648-35115d95a30c)
+
 
 **3. AWS Lambda with Amazon RDS and Amazon S3:**
 
