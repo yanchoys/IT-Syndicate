@@ -68,7 +68,6 @@ Certification Plan:
 - **Cost Considerations:** Costs can increase if you don't carefully manage container resource allocations.
 
 
-
 **3. AWS Lambda with Amazon RDS and Amazon S3:**
 
 **Pros:**
