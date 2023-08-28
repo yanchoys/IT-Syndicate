@@ -37,6 +37,7 @@ Certification Plan:
 - Goal: Specialize in AWS networking and connectivity.
 - Study Materials: AWS Certified Advanced Networking – Specialty Exam Guide, AWS Training, and Practice Tests.
 
+![image](https://github.com/yanchoys/IT-Syndicate/assets/98917290/0c828bbf-278b-4052-a987-dd4a1ab9f9f5)
 
 # Task 3
  
@@ -66,7 +67,6 @@ Certification Plan:
 - **Complex Setup:** Setting up the network and security groups for containers can be intricate.
 - **Cost Considerations:** Costs can increase if you don't carefully manage container resource allocations.
 
-![image](https://github.com/yanchoys/IT-Syndicate/assets/98917290/b77c2a0c-71b4-4be2-b648-35115d95a30c)
 
 
 **3. AWS Lambda with Amazon RDS and Amazon S3:**
