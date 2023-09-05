@@ -93,3 +93,16 @@ In conclusion, the choice between ECS Fargate and EC2 Auto Scaling depends on yo
 
 If ease of setup, cost-efficiency, and reduced operational overhead are essential, ECS Fargate is a strong choice.
 If you need more customization, cost flexibility, and have the expertise to manage infrastructure, EC2 Auto Scaling offers greater control.
+
+### Task 3
+Creating Distribution CDN
+![image](https://github.com/yanchoys/IT-Syndicate/assets/98917290/cc6b7982-1d27-44e9-bfd1-89c41b90d201)
+#### **testing CDN**
+![image](https://github.com/yanchoys/IT-Syndicate/assets/98917290/eedde642-8a7c-4c46-85a5-6b46e51b0b0e)
+
+![image](https://github.com/yanchoys/IT-Syndicate/assets/98917290/75a5c11c-054c-4984-93f8-806549eb3241)
+
+#### **output CDN**
+![image](https://github.com/yanchoys/IT-Syndicate/assets/98917290/079cf766-3b8b-4b76-be40-59e6e4888b67)
+
+
