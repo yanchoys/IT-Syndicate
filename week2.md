@@ -25,6 +25,8 @@ For Inbound traffic from application load balancer
 ![image](https://github.com/yanchoys/IT-Syndicate/assets/98917290/fdb70442-fd04-4cf7-b81b-183fd90aaa88)
 
 
+
+
 ### Testsgoing to tests i used jmeter with 10000 people count
 moving on to tests i used jmeter with 5000 people count
 ramp-up period 10 for ECS Fargate and Auto-Scaling group
@@ -32,6 +34,8 @@ also used not just a get request with a 200 code, but also whether the page cont
 after looking at the graphs and seeing the result, that using ECS ​​Fargate there were 1450 successful logins
 Auto-scaling Group showed 3946
 but running the test each time completely different results
+![image](https://github.com/yanchoys/IT-Syndicate/assets/98917290/144136b9-d904-4a12-8a5f-cc6d96b44934)
+
 
 **ECS Fargate:**
 
