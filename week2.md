@@ -105,4 +105,7 @@ Creating Distribution CDN
 #### **output CDN**
 ![image](https://github.com/yanchoys/IT-Syndicate/assets/98917290/079cf766-3b8b-4b76-be40-59e6e4888b67)
 
+![image](https://github.com/yanchoys/IT-Syndicate/assets/98917290/c63395bf-156c-4892-bdd1-bb501622d87d)
+
+
 
