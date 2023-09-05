@@ -37,7 +37,8 @@ Certification Plan:
 - Goal: Specialize in AWS networking and connectivity.
 - Study Materials: AWS Certified Advanced Networking – Specialty Exam Guide, AWS Training, and Practice Tests.
 
-![image](https://github.com/yanchoys/IT-Syndicate/assets/98917290/0c828bbf-278b-4052-a987-dd4a1ab9f9f5)
+![image](https://github.com/yanchoys/IT-Syndicate/assets/98917290/58db165e-7e2b-4464-9266-850ab5616da8)
+
 
 # Task 3
  
