@@ -1,3 +1,4 @@
+### Terraform Code
 ```
 provider "aws" {
   region     = "us-east-1" # Замените на ваш регион
@@ -202,3 +203,6 @@ resource "aws_lb_target_group_attachment" "example_target_attachment" {
   target_id        = aws_autoscaling_group.this.id
 }
 ```
+#### Output loadBalancer
+![image](https://github.com/yanchoys/IT-Syndicate/assets/98917290/9febac4a-08a1-41d5-98e3-181384c1cbe4)
+![image](https://github.com/yanchoys/IT-Syndicate/assets/98917290/04b7d788-f382-47ee-835f-843171e38ff8)
