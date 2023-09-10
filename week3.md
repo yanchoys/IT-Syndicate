@@ -208,3 +208,7 @@ resource "aws_lb_target_group_attachment" "example_target_attachment" {
 ![image](https://github.com/yanchoys/IT-Syndicate/assets/98917290/04b7d788-f382-47ee-835f-843171e38ff8)
 #### Scaling Policies
 ![image](https://github.com/yanchoys/IT-Syndicate/assets/98917290/16f0b884-8025-440e-9199-06f435b6a3d7)
+
+#### Inspector
+![image](https://github.com/yanchoys/IT-Syndicate/assets/98917290/c5a53eb3-8c0e-4bf9-a847-2fb8e507f645)
+
