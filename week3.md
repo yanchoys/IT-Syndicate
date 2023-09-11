@@ -64,7 +64,7 @@ resource "aws_lb_target_group" "example_target_group" {
   name        = "example-target-group"
   port        = 80
   protocol    = "HTTP"
-  vpc_id      = "vpc-0f19adefdd84a530c" # Используйте ваш ID VPC
+  vpc_id      = "vpc-0f19adefdd84a530c" # ID VPC
   target_type = "instance"              # Или "ip" в зависимости от ваших потребностей
 }
 
@@ -72,9 +72,9 @@ resource "aws_lb_target_group" "example_target_group" {
 resource "aws_lb" "example_lb" {
   name                       = "example-lb"
   internal                   = false
-  load_balancer_type         = "application"                                                                                                                                                            # Или "network" в зависимости от ваших потребностей
+  load_balancer_type         = "application"                                                                                                                                                            # Или "network"
   subnets                    = ["subnet-05a21e2cbf55f7ada", "subnet-063800a603f8d2096", "subnet-005c2375e2805546f", "subnet-01eac0ea8889e29e7", "subnet-09ab9b1751a04a9bb", "subnet-08f161168ef3d6aee"] # Замените на ваши субнеты
-  enable_deletion_protection = false                                                                                                                                                                    # Установите true, если нужно включить защиту от удаления
+  enable_deletion_protection = false                                                                                                                                                                    
   security_groups            = [aws_security_group.terraform_sec_group.id]
 
   enable_http2 = true # Настройки балансировщика, по желанию
