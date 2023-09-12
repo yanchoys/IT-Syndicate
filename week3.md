@@ -202,6 +202,24 @@ resource "aws_lb_target_group_attachment" "example_target_attachment" {
   target_group_arn = aws_lb_target_group.example_target_group.arn
   target_id        = aws_autoscaling_group.this.id
 }
+resource "aws_iam_policy" "example" {
+  name        = "example-policy"
+  description = "Example IAM Policy"
+
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Effect = "Allow",
+        Action = [
+          "s3:GetObject",
+        ],
+        Resource = "arn:aws:s3:::example-bucket/*",
+      },
+    ],
+  })
+}
+
 ```
 #### Output loadBalancer
 ![image](https://github.com/yanchoys/IT-Syndicate/assets/98917290/9febac4a-08a1-41d5-98e3-181384c1cbe4)
@@ -212,3 +230,51 @@ resource "aws_lb_target_group_attachment" "example_target_attachment" {
 #### Inspector
 ![image](https://github.com/yanchoys/IT-Syndicate/assets/98917290/c5a53eb3-8c0e-4bf9-a847-2fb8e507f645)
 
+### Terragrant 
+my-aws-infra/
+|-- terragrunt.hcl
+|-- modules/
+|   |-- security-group/
+|   |   |-- main.tf
+|   |   |-- variables.tf
+|   |   `-- terragrunt.hcl
+|   |-- load-balancer/
+|   |   |-- main.tf
+|   |   |-- variables.tf
+|   |   `-- terragrunt.hcl
+|   |-- autoscaling-group/
+|   |   |-- main.tf
+|   |   |-- variables.tf
+|   |   `-- terragrunt.hcl
+|   |-- launch-template/
+|   |   |-- main.tf
+|   |   |-- variables.tf
+|   |   `-- terragrunt.hcl
+|-- global/
+|   |-- terraform.tfvars
+|   `-- terragrunt.hcl
+
+remote_state {
+  backend = "s3"
+  config = {
+    bucket         = "your-terraform-state-bucket"
+    key            = "${path_relative_to_include()}/terraform.tfstate"
+    region         = "us-east-1" # Замените на ваш регион
+    encrypt        = true
+    encrypt        = true
+    shared_credentials_file = "~/.aws/credentials" # Путь к вашему файлу AWS credentials
+  }
+}
+
+# Импортируем переменные из файла terraform.tfvars в каждом модуле
+inputs = {
+  vpc_id      = "vpc-0f19adefdd84a530c" # Замените на ваш ID VPC
+  subnet_ids  = [
+    "subnet-05a21e2cbf55f7ada",
+    "subnet-063800a603f8d2096",
+    "subnet-005c2375e2805546f",
+    "subnet-01eac0ea8889e29e7",
+    "subnet-09ab9b1751a04a9bb",
+    "subnet-08f161168ef3d6aee",
+  ] # Замените на ваши субнеты
+}
