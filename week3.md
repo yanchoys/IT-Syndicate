@@ -263,29 +263,77 @@ my-aws-infra/
 |   |-- terraform.tfvars
 |   `-- terragrunt.hcl
 ```
+#### my-aws-infra/security_group/main.tf:
 ```
-remote_state {
-  backend = "s3"
-  config = {
-    bucket         = "s3"
-    key            = "${path_relative_to_include()}/terraform.tfstate"
-    region         = "us-east-1" 
-    encrypt        = true
-    encrypt        = true
-    shared_credentials_file = "~/.aws/credentials" # Путь к вашему файлу AWS credentials
+resource "aws_security_group" "terraform_sec_group" {
+  name   = "terraform_sec"
+  vpc_id = "vpc-0f19adefdd84a530c"
+
+  egress {
+    cidr_blocks = ["0.0.0.0/0"]
+    from_port   = 0
+    protocol    = "-1"
+    to_port     = 0
   }
+  ingress {
+    cidr_blocks = ["0.0.0.0/0", ]
+    description = ""
+    from_port   = 22
+    protocol    = "tcp"
+    to_port     = 22
+  }
+
+  ingress {
+    cidr_blocks = ["0.0.0.0/0", ]
+    description = ""
+    from_port   = 8080
+    protocol    = "tcp"
+    to_port     = 8080
+  }
+
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0", ]
+  }
+  ingress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0", ]
+  }
+  ingress {
+    cidr_blocks = ["0.0.0.0/0", ]
+    description = ""
+    from_port   = 3000
+    protocol    = "tcp"
+    to_port     = 3000
+  }
+
 }
 
-# Импортируем переменные из файла terraform.tfvars в каждом модуле
-inputs = {
-  vpc_id      = "vpc-0f19adefdd84a530c" 
-  subnet_ids  = [
-    "subnet-05a21e2cbf55f7ada",
-    "subnet-063800a603f8d2096",
-    "subnet-005c2375e2805546f",
-    "subnet-01eac0ea8889e29e7",
-    "subnet-09ab9b1751a04a9bb",
-    "subnet-08f161168ef3d6aee",
-  ] 
+```
+#### my-aws-infra/load_balancer/main.tf
+```
+resource "aws_lb" "example_lb" {
+  name                       = "example-lb"
+  internal                   = false
+  load_balancer_type         = "application"
+  subnets                    = ["subnet-05a21e2cbf55f7ada", "subnet-063800a603f8d2096", "subnet-005c2375e2805546f", "subnet-01eac0ea8889e29e7", "subnet-09ab9b1751a04a9bb", "subnet-08f161168ef3d6aee"]
+  enable_deletion_protection = false
+  security_groups            = [aws_security_group.terraform_sec_group.id]
+
+  enable_http2 = true
+}
+```
+#### my-aws-infra/target_group/main.tf
+```
+resource "aws_lb_target_group" "example_target_group" {
+  name        = "example-target-group"
+  port        = 80
+  protocol    = "HTTP"
+  vpc_id      = "vpc-0f19adefdd84a530c"
+  target_type = "instance"
 }
 ```
