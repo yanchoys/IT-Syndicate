@@ -429,7 +429,6 @@ Ansible
               proxy_set_header X-Real-IP $remote_addr;
           }
 
-          # Дополнительные настройки, если необходимо
       }
     dest: /etc/nginx/nginx.conf
   notify: Reload Nginx
