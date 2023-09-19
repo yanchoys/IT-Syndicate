@@ -380,3 +380,88 @@ ALB and TargetGroup
 Example system manager successed ansible playbook
 ![image](https://github.com/yanchoys/IT-Syndicate/assets/98917290/ca9e3362-5fa4-4498-b3d9-c97ffe55093c)
 
+Ansible
+```
+- name: Install PostgreSQL
+  become: yes
+  yum:
+    name: postgresql
+    state: present
+
+- name: Create PostgreSQL user
+  become: yes
+  postgresql_user:
+    db: your_database
+    name: your_user
+    password: your_password
+    state: present
+  tags: db
+
+- name: Create PostgreSQL database
+  become: yes
+  postgresql_db:
+    name: your_database
+    owner: your_user
+    state: present
+  tags: db
+```
+```
+- name: Install required software
+  become: yes
+  package:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - python3
+    - python3-pip
+    - nginx
+
+- name: Create Nginx configuration
+  copy:
+    content: |
+      server {
+          listen 80;
+          server_name 3.90.221.11; # Замените на ваш домен или IP-адрес
+
+          location / {
+              proxy_pass http://localhost:8000;
+              proxy_set_header Host $host;
+              proxy_set_header X-Real-IP $remote_addr;
+          }
+
+          # Дополнительные настройки, если необходимо
+      }
+    dest: /etc/nginx/nginx.conf
+  notify: Reload Nginx
+  tags: nginx
+
+- name: Start and enable Nginx
+  become: yes
+  systemd:
+    name: nginx
+    state: started
+    enabled: yes
+  tags: nginx
+```
+```
+- name: Update code from GitHub
+  become: yes
+  git:
+    repo: https://github.com/yourusername/yourapp.git
+    dest: /repos/
+    update: yes
+  tags: deployment
+
+- name: Perform database migrations
+  become: yes
+  command: python /repos/manage.py migrate
+  environment:
+    DJANGO_SETTINGS_MODULE: setting.py  
+    DB_HOST: 10.0.10.140  
+    DB_PORT: 5432  
+    DB_NAME: your_database  
+    DB_USER: your_user  
+    DB_PASSWORD: your_password  
+  tags: migration
+
+```
