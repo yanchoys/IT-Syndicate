@@ -464,3 +464,14 @@ Ansible
   tags: migration
 
 ```
+created ini file
+```
+[nginx]
+3.90.221.11 ansible_ssh_user=ec2-user ansible_ssh_private_key_file=~/.ssh/key_post_aws.pem
+
+[postgre]
+10.0.10.140 ansible_ssh_user=ec2-user ansible_ssh_private_key_file=~/.ssh/key_nginx_aws.pem
+
+[deploy]
+54.90.162.120 ansible_ssh_user=ec2-user ansible_ssh_private_key_file=~/.ssh/key_nginx_aws.pem
+```
