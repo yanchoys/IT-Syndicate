@@ -48,3 +48,51 @@ CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 - Creating task
 ![image](https://github.com/yanchoys/IT-Syndicate/assets/98917290/1f1edc90-dca1-4c68-9b7b-8d7af5709dd7)
 ![image](https://github.com/yanchoys/IT-Syndicate/assets/98917290/4f756ec4-39f5-47cd-9f39-466dc09dc720)
+
+### Task 3
+
+Instead of copying the entire project into the container, we only copy the Pipfile and Pipfile.lock to install the dependencies. This reduces the number of unnecessary files in the container.
+```
+# Используйте официальный образ Python
+FROM python:3.8
+
+# Установка зависимостей
+RUN apt-get update && apt-get install -y git && apt-get clean
+RUN pip install --no-cache-dir pipenv
+
+# Создание рабочей директории
+WORKDIR /app
+
+# Клонирование Git-репозитория
+RUN git clone https://github.com/digitalocean/sample-django.git
+
+# Переход в директорию проекта
+WORKDIR /app/sample-django
+
+# Установка зависимостей проекта
+COPY Pipfile Pipfile.lock /app/sample-django/
+RUN pipenv install --deploy --ignore-pipfile
+
+# Копирование секретов в контейнер
+COPY db_user_secret /run/secrets/db_user_secret
+COPY db_password_secret /run/secrets/db_password_secret
+COPY django_secret_key_secret /run/secrets/django_secret_key_secret
+
+# Экспорт переменных окружения
+ENV POSTGRES_USER_FILE=/run/secrets/db_user_secret
+ENV POSTGRES_PASSWORD_FILE=/run/secrets/db_password_secret
+ENV DJANGO_SECRET_KEY_FILE=/run/secrets/django_secret_key_secret
+
+# Применение миграций базы данных
+RUN pipenv run python manage.py migrate
+
+# Запуск Django сервера
+CMD ["pipenv", "run", "python", "manage.py", "runserver", "0.0.0.0:8000"]
+```
+
+- additionaly creating docker-compose.yml for more secure
+```
+echo "my_db_user" | docker secret create db_user_secret -
+echo "my_db_password" | docker secret create db_password_secret -
+echo "mysecretkey" | docker secret create django_secret_key_secret -
+```
