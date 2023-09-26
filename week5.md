@@ -90,7 +90,7 @@ RUN pipenv run python manage.py migrate
 CMD ["pipenv", "run", "python", "manage.py", "runserver", "0.0.0.0:8000"]
 ```
 
-- additionaly creating docker-compose.yml for more secure
+- additionally creating docker-compose.yml for more secure storage credentials
 ```
 echo "my_db_user" | docker secret create db_user_secret -
 echo "my_db_password" | docker secret create db_password_secret -
