@@ -96,3 +96,34 @@ echo "my_db_user" | docker secret create db_user_secret -
 echo "my_db_password" | docker secret create db_password_secret -
 echo "mysecretkey" | docker secret create django_secret_key_secret -
 ```
+
+docker-compose
+```
+version: '3'
+services:
+  web:
+    image: public.ecr.aws/q9z8p5v2/test:latest
+    container_name: django-container
+    networks:
+      - webnet
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - DJANGO_SECRET_KEY=mysecretkey
+      - DJANGO_DEBUG=True
+      - DATABASE_URL=postgres://postgres:password@db:5432/db_for_test
+    ports:
+      - "8000:8000"
+  db:
+    image: postgres:latest
+    container_name: postgres-container
+    networks:
+      - dbnet
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=db_for_test
+networks:
+  webnet:
+  dbnet:
+```
